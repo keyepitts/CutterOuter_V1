@@ -17,6 +17,7 @@ o<rack_change> sub
 M73 
 	; Use Exact Stop mode
 G61
+M49 ; disable feed and speed overwrite 
     ; print to console (if available)
 (print, Storing tool and pocket information in local variables)
 #<newtool> = #<selected_tool>
@@ -213,6 +214,7 @@ O300 elseif [#<newtool> GT 0]
     O310 endif
 O300 endif
 
+M48 ; re-enable feed and speed overwrite 
 (print, End of Program)
 o<rack_change> endsub [1]
 
