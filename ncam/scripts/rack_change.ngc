@@ -66,9 +66,9 @@ O200 elseif [#<oldtool> GT 0]
                 ;Drop spindle to IR sensor height
             G53 G0 Z[#<_ini[ATC]OFF_HEIGHT_Z>]
                 ;Spin spindle CCW and place tool in rack
-            M4 S1200
+            M4 S[#<_ini[ATC]SPINDLESPEED>]
             G4 P 2.0
-            G53 G01 Z #<_ini[ATC]FIRSTPOCKET_Z> F40
+            G53 G01 Z #<_ini[ATC]FIRSTPOCKET_Z> F[#<_ini[ATC]UNLOAD_ZSPEED>]
                 ; Move back to IR sensor height above the old pocket
             G53 G0 Z[#<_ini[ATC]OFF_HEIGHT_Z>]
             M5
@@ -130,15 +130,15 @@ O300 elseif [#<newtool> GT 0]
                 ; drop Z to IR sensor height
             G53 G0 Z[#<_ini[ATC]OFF_HEIGHT_Z>]
                 ; spin spindle CW
-            M3 S1200
+            M3 S[#<_ini[ATC]SPINDLESPEED>]
             G4 P 2.0
             (print, above  pocket #<newtool>, spindle running CW)
                 ; move Z to pickup tool
-            G53 G01 Z #<_ini[ATC]FIRSTPOCKET_Z> F40
+            G53 G01 Z #<_ini[ATC]FIRSTPOCKET_Z> F[#<_ini[ATC]LOAD_ZSPEED>]
                 ; retract Z and repeat pickup to lock spindle nut
             G53 G0 Z[#<_ini[ATC]OFF_HEIGHT_Z>]
             G4 P0.2
-            G53 G01 Z #<_ini[ATC]FIRSTPOCKET_Z> F40
+            G53 G01 Z #<_ini[ATC]FIRSTPOCKET_Z> F[#<_ini[ATC]LOAD_ZSPEED>]
             G53 G0 Z[#<_ini[ATC]OFF_HEIGHT_Z>]
             M5
             G4 P2.0
