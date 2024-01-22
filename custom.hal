@@ -1,0 +1,6 @@
+# Include your custom HAL commands here
+# This file will not be overwritten when you run PNCconf again
+
+
+ # net dout-COVER <= motion.digital-out-018
+ # net dout-018 => hm2_7i76e.0.gpio.018.out
